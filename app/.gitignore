@@ -1,0 +1,8 @@
+/target/
+/generated/
+/bin/
+/.settings/
+/.metadata/
+.classpath
+.project
+.settings

@@ -1,0 +1,16 @@
+{
+    // Comments are permitted in configuration files, but they should be
+    // minified if they are going to be used as strict JSON
+    
+    // Global Settings
+    ":configurator:resource-version" : 1,
+    ":configurator:symbolic-name" : "eu.brain.iot.app.config",
+    ":configurator:version" : "0.0.1-SNAPSHOT",
+    
+   
+    "eu.brain.iot.BehaviourManagementService": {
+           "indexes": "https://nexus.repository-pert.ismb.it/repository/marketplaces/com.paremus.brain.iot.marketplace/security-light-marketplace/0.0.1-SNAPSHOT/index.xml", 
+           "connection.settings": ""
+           }
+   
+}

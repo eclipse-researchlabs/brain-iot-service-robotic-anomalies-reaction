@@ -1,0 +1,19 @@
+test-index: target/test-index.xml;name="multi-framework-example Test"
+
+-standalone: ${index},${test-index}
+
+-runproperties.debug: \
+	osgi.console=,\
+	osgi.console.enable.builtin=false
+	
+-runfw: org.eclipse.osgi
+-runee: JavaSE-1.8
+
+-resolve.effective: active
+
+-runrequires.debug: osgi.identity;filter:='(osgi.identity=org.apache.felix.webconsole)',\
+ osgi.identity;filter:='(osgi.identity=org.apache.felix.webconsole.plugins.ds)',\
+ osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.shell)',\
+ osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.runtime)',\
+ osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.command)'
+
