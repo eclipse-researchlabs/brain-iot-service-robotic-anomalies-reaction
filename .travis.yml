@@ -7,7 +7,7 @@ env:
   MAVEN_DEPLOY_OPTS: "'-DaltReleaseDeploymentRepository=brain-iot-releases::default::https://nexus.repository-pert.ismb.it/repository/maven-releases -DaltSnapshotDeploymentRepository=brain-iot-snapshots::default::https://nexus.repository-pert.ismb.it/repository/maven-snapshots'"
 
 
-# Cache downloaded dependencies and plugins between builds.
+# Cache downloaded dependencies and plugins between builds .
 cache:
     directories:
      - .m2/repository
