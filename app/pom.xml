@@ -7,7 +7,7 @@
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-     <groupId>eu.brain.iot.service.robotic</groupId>
+    <groupId>eu.brain.iot.service.robotic</groupId>
     <artifactId>anomalies.reaction.app</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <description>The redeployment application packaging project - using OSGi enRoute R7</description>
@@ -135,10 +135,7 @@
                 <groupId>biz.aQute.bnd</groupId>
                 <artifactId>bnd-maven-plugin</artifactId>
             </plugin>
-             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-            </plugin>
+          
             
             <plugin>
                 <groupId>biz.aQute.bnd</groupId>

@@ -42,6 +42,12 @@ public class OSGIFrameworkQueryImpl implements OSGIFrameworkQuery,SmartBehaviour
     thisOSGiFrameworkID=context.getProperty(Constants.FRAMEWORK_UUID);
     CreateFile();
     WriteToFile("Runner: I am "+ thisOSGiFrameworkID);
+    try {
+		Thread.sleep(5000);
+	} catch (InterruptedException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
     worker = Executors.newSingleThreadExecutor();
     worker.execute(()->{
     	Notification(thisOSGiFrameworkID);

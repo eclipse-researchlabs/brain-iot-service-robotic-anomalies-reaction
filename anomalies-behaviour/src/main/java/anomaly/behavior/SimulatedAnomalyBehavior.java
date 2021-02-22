@@ -15,7 +15,7 @@ import eu.brain.iot.eventing.api.SmartBehaviour;
 import eu.brain.iot.redeployment.api.AnomaliesDTO;
 
 
-@Component(service= {SmartBehaviour.class, SimulatedAnomalyBehavior.class},
+@Component(service= {SimulatedAnomalyBehavior.class},
 		immediate=true)
 @SmartBehaviourDefinition(consumed = {},
 author = "LINKS", name = "anomaly behavior simulation",
@@ -28,7 +28,7 @@ public class SimulatedAnomalyBehavior{
 	    public void start(BundleContext context){
 	    System.out.println("Anomaly Behavior: I am the simulated Anomaly Behavior");
 	    AnomaliesDTO anomalyEvent=new AnomaliesDTO();
-	    anomalyEvent.Scenario="Light";
+	    anomalyEvent.Scenario="ROB";
 	    try {
 			Thread.sleep(10000);
 		} catch (InterruptedException e) {

@@ -131,7 +131,8 @@ public void ResponseToSecurityLightSystem() {
 }   
 
 public void ResponseToRobotBatteryAnomaly() {
-	
+	 installNewBehavior("eu.brain.iot.service.robotic.eu.brain.iot.robot.behaviour", "0.0.2.SNAPSHOT",TargetNode);
+	 installNewBehavior("eu.brain.iot.service.robotic.eu.brain.iot.ros.edge.node", "0.0.4.SNAPSHOT",TargetNode);
 }   
 
 
