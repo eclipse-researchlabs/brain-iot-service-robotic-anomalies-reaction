@@ -302,8 +302,11 @@ Bundle-SymbolicName: ${project.groupId}.${project.artifactId}
     
     
       <modules>
-      <module>OSGI.Framework.Query.api</module>
-        <module>OSGi.Framework.info.Query </module>
+        <module>app</module>
+        <module>multi-framework</module>
+        <module>BMS-Configurator</module>
+        <module>OSGi.Framework.info.Query.api</module>
+        <module>OSGi.Framework.info.Query.impl</module>
         <module>redeployment.api</module>
         <module>redeployment.impl</module>
         <module>simulated-anomalies-behaviour</module>
