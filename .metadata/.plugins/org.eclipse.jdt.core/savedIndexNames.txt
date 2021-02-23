@@ -1,0 +1,1 @@
+INDEX VERSION 1.131+/home/xu/eclipse-workspace/redeployment/.metadata/.plugins/org.eclipse.jdt.core

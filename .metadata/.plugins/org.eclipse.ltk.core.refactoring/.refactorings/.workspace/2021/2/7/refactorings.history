@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;multi-framework&apos;" deleteContents="false" description="Delete resource &apos;multi-framework&apos;" element1="/multi-framework" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1612794804002"/>
+</session>

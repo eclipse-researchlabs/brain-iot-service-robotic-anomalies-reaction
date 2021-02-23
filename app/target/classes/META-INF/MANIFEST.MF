@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1614073937278
+Bundle-Description: "The redeployment application packaging project - 
+ using OSGi enRoute R7"
+Bundle-ManifestVersion: 2
+Bundle-Name: anomalies.reaction.app
+Bundle-SymbolicName: eu.brain.iot.service.robotic.anomalies.reaction.a
+ pp
+Bundle-Version: 0.0.1.202102230952
+Created-By: 1.8.0_282 (Private Build)
+Private-Package: config
+Require-Capability: osgi.extender;filter:="(&(osgi.extender=osgi.confi
+ gurator)(version>=1.0.0)(!(version>=2.0.0)))",osgi.ee;filter:="(&(osg
+ i.ee=JavaSE)(version=1.8))"
+Tool: Bnd-4.2.0.201903051501
+

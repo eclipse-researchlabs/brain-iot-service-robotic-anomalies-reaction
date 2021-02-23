@@ -1,0 +1,88 @@
+!SESSION 2021-02-08 15:29:35.153 -----------------------------------------------
+eclipse.buildId=4.14.0.I20191210-0610
+java.version=1.8.0_275
+java.vendor=Private Build
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2021-02-08 15:31:08.615
+!MESSAGE The POM for eu.brain.iot:RedeploymentImpl:jar:0.0.1-SNAPSHOT is missing, no dependency information available
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2021-02-08 15:31:08.619
+!MESSAGE The POM for eu.brain.iot:OSGI.Framework.Query.api:jar:0.0.1-SNAPSHOT is missing, no dependency information available
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2021-02-08 15:31:08.624
+!MESSAGE The POM for eu.brain.iot:app:jar:0.0.1-SNAPSHOT is missing, no dependency information available
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2021-02-08 15:31:09.166
+!MESSAGE Failed to resolve dependency eu.brain.iot:RedeploymentImpl:jar:0.0.1-SNAPSHOT
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2021-02-08 15:31:09.170
+!MESSAGE Failed to resolve dependency eu.brain.iot:OSGI.Framework.Query.api:jar:0.0.1-SNAPSHOT
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2021-02-08 15:31:09.173
+!MESSAGE Failed to resolve dependency eu.brain.iot:app:jar:0.0.1-SNAPSHOT
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2021-02-08 15:31:10.335
+!MESSAGE The POM for eu.brain.iot:RedeploymentImpl:jar:0.0.1-SNAPSHOT is missing, no dependency information available
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2021-02-08 15:31:10.338
+!MESSAGE The POM for eu.brain.iot:OSGI.Framework.Query.api:jar:0.0.1-SNAPSHOT is missing, no dependency information available
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2021-02-08 15:31:10.340
+!MESSAGE The POM for eu.brain.iot:app:jar:0.0.1-SNAPSHOT is missing, no dependency information available
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2021-02-08 15:31:10.760
+!MESSAGE The POM for eu.brain.iot:RedeploymentImpl:jar:0.0.1-SNAPSHOT is missing, no dependency information available
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2021-02-08 15:31:10.763
+!MESSAGE The POM for eu.brain.iot:OSGI.Framework.Query.api:jar:0.0.1-SNAPSHOT is missing, no dependency information available
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2021-02-08 15:31:10.766
+!MESSAGE The POM for eu.brain.iot:app:jar:0.0.1-SNAPSHOT is missing, no dependency information available
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2021-02-08 15:31:11.236
+!MESSAGE Failed to resolve dependency eu.brain.iot:RedeploymentImpl:jar:0.0.1-SNAPSHOT
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2021-02-08 15:31:11.239
+!MESSAGE Failed to resolve dependency eu.brain.iot:OSGI.Framework.Query.api:jar:0.0.1-SNAPSHOT
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2021-02-08 15:31:11.242
+!MESSAGE Failed to resolve dependency eu.brain.iot:app:jar:0.0.1-SNAPSHOT
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2021-02-08 15:31:11.725
+!MESSAGE The POM for eu.brain.iot:RedeploymentImpl:jar:0.0.1-SNAPSHOT is missing, no dependency information available
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2021-02-08 15:31:11.728
+!MESSAGE The POM for eu.brain.iot:OSGI.Framework.Query.api:jar:0.0.1-SNAPSHOT is missing, no dependency information available
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2021-02-08 15:31:11.731
+!MESSAGE The POM for eu.brain.iot:app:jar:0.0.1-SNAPSHOT is missing, no dependency information available
+
+!ENTRY org.eclipse.m2e.logback.appender 4 0 2021-02-08 15:31:12.623
+!MESSAGE Could not download javadoc for eu.brain.iot:app:0.0.1-SNAPSHOT
+!STACK 1
+org.eclipse.core.runtime.CoreException: Could not resolve artifact eu.brain.iot:app:jar:javadoc:0.0.1-SNAPSHOT
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.lambda$4(MavenImpl.java:805)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:179)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:114)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:101)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.resolve(MavenImpl.java:773)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.resolve(MavenImpl.java:750)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.download(DownloadSourcesJob.java:330)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadAttachments(DownloadSourcesJob.java:316)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadMaven(DownloadSourcesJob.java:269)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadFilesAndPopulateToUpdate(DownloadSourcesJob.java:233)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.lambda$0(DownloadSourcesJob.java:161)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:179)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:153)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:101)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.execute(MavenImpl.java:1375)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.run(DownloadSourcesJob.java:161)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Contains: Missing eu.brain.iot:app:jar:javadoc:0.0.1-SNAPSHOT
+!SUBENTRY 1 org.eclipse.m2e.core 4 -1 2021-02-08 15:31:12.624
+!MESSAGE Could not resolve artifact eu.brain.iot:app:jar:javadoc:0.0.1-SNAPSHOT
+!SUBENTRY 2 org.eclipse.m2e.core 4 -1 2021-02-08 15:31:12.624
+!MESSAGE Missing eu.brain.iot:app:jar:javadoc:0.0.1-SNAPSHOT

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.3.0" name="OSGi.Framework.info.Query.OSGIFrameworkQueryImpl" immediate="true" activate="start" deactivate="stop">
+  <property name="eu.brain.iot.behaviour.consumed" type="String">eu.brain.iot.Query.api.TargetNodeFIDResponse</property>
+  <property name="eu.brain.iot.behaviour.description" type="String" value="Report the current running OSGi Framework ID."/>
+  <property name="eu.brain.iot.behaviour.author" type="String" value="LINKS"/>
+  <property name="eu.brain.iot.behaviour.filter" type="String" value="(received=*)"/>
+  <property name="eu.brain.iot.behaviour.name" type="String" value="Local OSGi Framework ID Report"/>
+  <service>
+    <provide interface="eu.brain.iot.Query.api.OSGIFrameworkQuery"/>
+    <provide interface="eu.brain.iot.eventing.api.SmartBehaviour"/>
+  </service>
+  <reference name="eventBus" interface="eu.brain.iot.eventing.api.EventBus" field="eventBus"/>
+  <implementation class="OSGi.Framework.info.Query.OSGIFrameworkQueryImpl"/>
+</scr:component>

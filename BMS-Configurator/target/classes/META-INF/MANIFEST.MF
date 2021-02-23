@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1614073786675
+Bundle-Description: "The redeployment application - built using OSGi e
+ nRoute R7"
+Bundle-ManifestVersion: 2
+Bundle-Name: BMS.Configurator
+Bundle-SymbolicName: eu.brain.iot.service.robotic.BMS.Configurator
+Bundle-Version: 0.0.1.202102230949
+Created-By: 1.8.0_282 (Private Build)
+Private-Package: config
+Require-Capability: osgi.extender;filter:="(&(osgi.extender=osgi.confi
+ gurator)(version>=1.0.0)(!(version>=2.0.0)))",osgi.ee;filter:="(&(osg
+ i.ee=JavaSE)(version=1.8))"
+Tool: Bnd-4.2.0.201903051501
+
