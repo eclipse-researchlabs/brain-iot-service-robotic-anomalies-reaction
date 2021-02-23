@@ -302,8 +302,7 @@ Bundle-SymbolicName: ${project.groupId}.${project.artifactId}
     
     
       <modules>
-        <module>app</module>
-        <module>multi-framework</module>
+        <module>app</module> 
         <module>BMS-Configurator</module>
         <module>OSGi.Framework.info.Query.api</module>
         <module>OSGi.Framework.info.Query.impl</module>
