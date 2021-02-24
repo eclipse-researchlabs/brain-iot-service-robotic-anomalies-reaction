@@ -33,7 +33,7 @@ import eu.brain.iot.installer.api.BehaviourDTO;
 import eu.brain.iot.redeployment.api.AnomaliesDTO;
 @Component(service= {SmartBehaviour.class,RedeploymentImpl.class})
 @SmartBehaviourDefinition(consumed= {AnomaliesDTO.class,ReportTargetNodeDTO.class},filter="(timestamp=*)", 
-                         author="LINKS", name ="Redeplolyment Behavior", 
+                         author="LINKS", name ="Redeployment Behaviour", 
                          description="Implements a behavior that is able to response to the anomalies events.")
 public class RedeploymentImpl implements SmartBehaviour<BrainIoTEvent>{
    private String thisOSGiFrameworkID;
