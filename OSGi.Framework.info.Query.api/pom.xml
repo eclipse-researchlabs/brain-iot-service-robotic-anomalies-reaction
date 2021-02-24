@@ -9,7 +9,7 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
     <groupId>eu.brain.iot.service.robotic</groupId>
-    <artifactId>OSGI.Framework.info.Query.api</artifactId>
+    <artifactId>OSGi.Framework.info.Query.api</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
     <description>The Query.api API bundle - built using OSGi enRoute R7</description>

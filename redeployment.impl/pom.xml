@@ -21,7 +21,7 @@
         </dependency>
         <dependency>
         <groupId>eu.brain.iot.service.robotic</groupId>
-    <artifactId>OSGI.Framework.Query.api</artifactId>
+    <artifactId>OSGi.Framework.info.Query.api</artifactId>
     <version>0.0.1-SNAPSHOT</version>
         </dependency>
           <dependency>
@@ -34,11 +34,6 @@
             <artifactId>test-bundles</artifactId>
             <type>pom</type>
         </dependency>
-        <dependency>
-        <groupId>eu.brain.iot.service.robotic</groupId>
-        <artifactId>OSGI.Framework.Query.api</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-       </dependency> 
          <dependency>
             <groupId>com.paremus.brain.iot</groupId>
             <artifactId>management.impl</artifactId>

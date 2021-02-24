@@ -1,4 +1,4 @@
-package OSGi.Framework.info.Query;
+package OSGi.Framework.info.Query.impl;
 
 import java.io.File;
 import java.io.FileWriter;

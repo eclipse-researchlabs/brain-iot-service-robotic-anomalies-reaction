@@ -93,7 +93,7 @@
         
         <dependency>
         <groupId>eu.brain.iot.service.robotic</groupId>
-        <artifactId>OSGI.Framework.Query.api</artifactId>
+        <artifactId>OSGi.Framework.info.Query.api</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         </dependency>
         
