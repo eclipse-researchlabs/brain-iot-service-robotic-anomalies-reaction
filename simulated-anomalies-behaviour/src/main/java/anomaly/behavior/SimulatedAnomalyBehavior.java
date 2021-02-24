@@ -18,7 +18,7 @@ import eu.brain.iot.redeployment.api.AnomaliesDTO;
 @Component(service= {SimulatedAnomalyBehavior.class},
 		immediate=true)
 @SmartBehaviourDefinition(consumed = {},
-author = "LINKS", name = "anomaly behavior simulation",
+author = "LINKS", name = "Anomaly Behavior Simulation",
 description = "Implement a behavior which can inject a anomalise event.")
 public class SimulatedAnomalyBehavior{
 	 @Reference 
