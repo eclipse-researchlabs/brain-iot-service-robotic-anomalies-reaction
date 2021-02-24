@@ -35,11 +35,7 @@
             <artifactId>test-bundles</artifactId>
             <type>pom</type>
         </dependency>
-         <dependency>
-            <groupId>com.paremus.brain.iot</groupId>
-            <artifactId>management.impl</artifactId>
-             <version>0.0.1-SNAPSHOT</version>
-        </dependency>
+       
      </dependencies>
 
     <build>

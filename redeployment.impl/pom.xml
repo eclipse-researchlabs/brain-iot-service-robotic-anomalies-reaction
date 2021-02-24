@@ -36,7 +36,7 @@
         </dependency>
          <dependency>
             <groupId>com.paremus.brain.iot</groupId>
-            <artifactId>management.impl</artifactId>
+            <artifactId>management.api</artifactId>
              <version>0.0.1-SNAPSHOT</version>
         </dependency>
         
