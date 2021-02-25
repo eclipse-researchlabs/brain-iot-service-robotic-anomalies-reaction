@@ -35,7 +35,11 @@
             <artifactId>test-bundles</artifactId>
             <type>pom</type>
         </dependency>
-       
+        <dependency>
+       <groupId>eu.brain.iot.service.robotic</groupId>
+       <artifactId>startButton.api</artifactId>
+       <version>0.0.1-SNAPSHOT</version>
+  </dependency>
      </dependencies>
 
     <build>

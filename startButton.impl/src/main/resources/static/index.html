@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en" ng-app>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BRAIN-IoT Service Robotic Example</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/bootstrap-responsive.min.css">
+  <link rel="stylesheet" href="css/app.css">
+  <script src="js/EventSource.js"></script>
+  <script src="lib/angular/angular.min.js"></script>
+  <script src="js/controllers.js"></script>
+  <script src="lib/jquery/jquery-1.10.1.min.js"></script>
+  <script src="lib/bootstrap/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="span4 logo">
+        <img border="0" src="img/logo-brainiot.png" alt="Paremus Ltd">
+      </div>
+      <div class="span4">
+        <h4 ng-bind-template="Welcome to the service robotic system"></h4>
+      </div>
+    </div>
+    
+      <div class="span12" ng-controller="StartSystemUICtl">
+        <button type="button" class="btn btn-danger" ng-click="trigger()">Start the system</button>
+      </div>
+      
+      
+      <div class="span12" style='margin-top:10px;' ng-controller="TriggerAnomalyUICtl">
+        <button type="button" class="btn btn-danger" ng-click="trigger()">Trigger an anomaly event</button>
+      </div>
+    </div>
+   
+   
+   
+</body>
+</html>

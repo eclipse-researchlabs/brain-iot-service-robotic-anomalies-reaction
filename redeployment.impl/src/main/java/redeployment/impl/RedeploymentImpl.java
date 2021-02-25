@@ -6,8 +6,6 @@ import java.io.IOException;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -22,7 +20,6 @@ import org.osgi.service.component.annotations.Reference;
 
 import com.paremus.brain.iot.management.api.BehaviourManagement;
 
-import eu.brain.iot.Query.api.OSGIFrameworkQuery;
 import eu.brain.iot.Query.api.ReportTargetNodeDTO;
 import eu.brain.iot.Query.api.TargetNodeFIDResponse;
 import eu.brain.iot.eventing.annotation.SmartBehaviourDefinition;
@@ -55,7 +52,7 @@ public class RedeploymentImpl implements SmartBehaviour<BrainIoTEvent>{
    public void start(BundleContext context) throws InterruptedException{
 	   thisOSGiFrameworkID = context.getProperty(Constants.FRAMEWORK_UUID);
 	   CreateFile();
-	   String s="Redeployer: I am ["+this.thisOSGiFrameworkID+"]\n";
+	   String s="Redeployer: I am ["+this.thisOSGiFrameworkID+"]";
 	   WriteToFile(s);
 	   getBehaviorsFromMarketplace();
 	   worker = Executors.newSingleThreadExecutor();
@@ -74,7 +71,7 @@ public class RedeploymentImpl implements SmartBehaviour<BrainIoTEvent>{
 
 public void findtheTargetNode(ReportTargetNodeDTO event) {
 	 TargetNode =event.TargetNodeFID;
-	 WriteToFile("Redeployer:"+ TargetNode+" is Runner\n");   
+	 WriteToFile("Redeployer:"+ TargetNode+" is Runner");   
    }
    
 public void installNewBehavior(String Behavior,String version,String targetNode) {
@@ -82,7 +79,7 @@ public void installNewBehavior(String Behavior,String version,String targetNode)
 	   behaviour.bundle=Behavior;
 	   behaviour.version=version;
 	   bms.installBehaviour(behaviour, targetNode);
-	   WriteToFile("Redeployer:event is delivered:" +Behavior +"\n");
+	   WriteToFile("Redeployer:event is delivered:" +Behavior);
 	   
 	   
    }
@@ -92,13 +89,16 @@ public void CreateFile(){
 	     try {
 	       myObj = new File("Redeployer_log.txt");
 	       if (myObj.createNewFile()) {
-	         System.out.println("File created: " + myObj.getName());
-	         System.out.println("Redeployer: File Path "+myObj.getAbsolutePath());
+	         WriteToFile("File created: " + myObj.getName());
+	         WriteToFile("Redeployer: File Path "+myObj.getAbsolutePath());
 	       } else {
-	         System.out.println("Redeployer:File already exists.");
+	    	WriteToFile("Redeployer:File already exists.");
+	    	 myObj.delete();
+	    	 WriteToFile("Redeployer:File deleted.");
+	         myObj.createNewFile();
 	       }
 	     } catch (IOException e) {
-	       System.out.println("Redeployer: An error occurred.");
+	    	 WriteToFile("Redeployer: An error occurred.");
 	       e.printStackTrace();
 	     }
 	   
@@ -115,7 +115,7 @@ public Collection<BehaviourDTO> getBehaviorsFromMarketplace() {
 
 
            behaviours.forEach(b -> {
-        	   WriteToFile(b.bundle + ":"+ b.version +"\n");
+        	   WriteToFile(b.bundle + ":"+ b.version);
         	  
            });
        } catch (Exception e) {
@@ -139,15 +139,15 @@ public void ResponseToRobotBatteryAnomaly() {
 public void WriteToFile(String s){
 	System.out.println(s);
 	 
-	   /*  try {
+      try {
 	    	 
 	       FileWriter myWriter = new FileWriter(myObj, true);
-	       myWriter.write(s);
+	       myWriter.write(s +"\n");
 	       myWriter.close();
 	     } catch (IOException e) {
 	       System.out.println("An error occurred.");
 	       e.printStackTrace();
-	     } */
+	     }
 	   }
 public boolean checkBackupNode(){
 	if(TargetNode=="") {
@@ -186,7 +186,7 @@ public void notify(BrainIoTEvent event) {
 				 WriteToFile("Redeployer: security light system will be installed into the targetNode"+ TargetNode);
 				 break;
 			 default:
-				 System.out.println("Redeploytor: The annomalies event is not recongnizable"); 
+				 WriteToFile("Redeploytor: The annomalies event is not recongnizable"); 
 		     
 			} 
 	   });

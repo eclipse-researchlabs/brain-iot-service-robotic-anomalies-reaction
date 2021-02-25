@@ -1,6 +1,7 @@
 package OSGi.Framework.info.Query.impl;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -16,14 +17,16 @@ import eu.brain.iot.Query.api.OSGIFrameworkQuery;
 import eu.brain.iot.Query.api.ReportTargetNodeDTO;
 import eu.brain.iot.Query.api.TargetNodeFIDResponse;
 import eu.brain.iot.eventing.annotation.SmartBehaviourDefinition;
+import eu.brain.iot.eventing.api.BrainIoTEvent;
 import eu.brain.iot.eventing.api.EventBus;
 import eu.brain.iot.eventing.api.SmartBehaviour;
+import eu.brain.iot.service.robotic.startButton.api.StartDTO;
 
 @Component(immediate=true)
-@SmartBehaviourDefinition(consumed =TargetNodeFIDResponse.class, filter="(received=*)",
+@SmartBehaviourDefinition(consumed = {TargetNodeFIDResponse.class, StartDTO.class}, filter="(timestamp=*)",
 author = "LINKS", name = "Local OSGi Framework ID Report",
 description = "Report the current running OSGi Framework ID.")
-public class OSGIFrameworkQueryImpl implements OSGIFrameworkQuery,SmartBehaviour<TargetNodeFIDResponse>{
+public class OSGIFrameworkQueryImpl implements OSGIFrameworkQuery,SmartBehaviour<BrainIoTEvent>{
     private String thisOSGiFrameworkID;
     //TODO add an implementation
     File myObj;
@@ -36,17 +39,7 @@ public class OSGIFrameworkQueryImpl implements OSGIFrameworkQuery,SmartBehaviour
     thisOSGiFrameworkID=context.getProperty(Constants.FRAMEWORK_UUID);
     CreateFile();
     WriteToFile("Runner: I am "+ thisOSGiFrameworkID);
-    try {
-		Thread.sleep(5000);
-	} catch (InterruptedException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
     worker = Executors.newSingleThreadExecutor();
-    worker.execute(()->{
-    	Notification(thisOSGiFrameworkID);
-    });
-    System.out.println("Runner: I am at the end of start function");
     }
     
     
@@ -75,7 +68,7 @@ public void Notification(String thisOSGiFrameworkID) {
 	ReportTargetNodeDTO TargetNodeFID = new  ReportTargetNodeDTO();
     TargetNodeFID.TargetNodeFID=thisOSGiFrameworkID;
 	 while(!discovered){
-		 System.out.println("Runner: I have not been discovered" +thisOSGiFrameworkID);
+		 WriteToFile("Runner: I have not been discovered" +thisOSGiFrameworkID);
 		 try {
 			Thread.sleep(1000);
 		} catch (InterruptedException e) {
@@ -93,11 +86,13 @@ public void Notification(String thisOSGiFrameworkID) {
 	     try {
 	       myObj = new File("Runner_log.txt");
 	       if (myObj.createNewFile()) {
-	         System.out.println("Runner: File created: " + myObj.getName());
+	         WriteToFile("Runner: File created: " + myObj.getName());
 	        
 	       } else {
-	         System.out.println("Runner: File already exists.");
-	         System.out.println("Runner: File Path "+myObj.getAbsolutePath());
+	    	   WriteToFile("Runner: File already exists.");
+	    	   myObj.delete();
+	    	   myObj.createNewFile();
+	    	   WriteToFile("Runner: File Path "+myObj.getAbsolutePath());
 	       }
 	     } catch (IOException e) {
 	       System.out.println("Runner: An error occurred.");
@@ -109,7 +104,7 @@ public void Notification(String thisOSGiFrameworkID) {
   public void WriteToFile(String s){
 	  System.out.println(s);
 	     
-	      /*try {
+	      try {
 	      
 	       FileWriter myWriter = new FileWriter(myObj, true);
 	       myWriter.write(s +"\n");
@@ -118,16 +113,30 @@ public void Notification(String thisOSGiFrameworkID) {
 	     } catch (IOException e) {
 	       System.out.println("Runner:An error occurred.");
 	       e.printStackTrace();
-	     } */
+	     } 
 	   }
+
+
+
 @Override
-public void notify(TargetNodeFIDResponse event) {
+public void notify(BrainIoTEvent event) {
 	// TODO Auto-generated method stub
-	if(event.received) {
-		System.out.println("Runner: I have received the response message");
-		discovered=true;
-	}
+	if(event instanceof StartDTO) {
+		 WriteToFile("Runner: I received the Start event");
 		
+		    worker.execute(()->{
+		    	Notification(thisOSGiFrameworkID);
+		    });
+	}
+	
+	if(event instanceof TargetNodeFIDResponse) {
+		TargetNodeFIDResponse targetNodFIDResponse= (TargetNodeFIDResponse) event;
+		if(targetNodFIDResponse.received) {
+			 WriteToFile("Runner: I have received the response message");
+			discovered=true;
+		}
+	}
+	
 }
 
 }
