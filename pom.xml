@@ -129,6 +129,20 @@
                 <type>pom</type>
                 <scope>test</scope>
             </dependency>
+            
+         
+            <dependency>
+                <groupId>com.paremus.brain.iot</groupId>
+                <artifactId>eventing.impl</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+                <scope>runtime</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.paremus.brain.iot</groupId>
+                <artifactId>message.integrity.insecure.impl</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+                <scope>runtime</scope>
+            </dependency>
             <dependency>
                 <groupId>org.osgi.enroute</groupId>
                 <artifactId>test-bundles</artifactId>
@@ -309,5 +323,7 @@ Bundle-SymbolicName: ${project.groupId}.${project.artifactId}
         <module>redeployment.api</module>
         <module>redeployment.impl</module>
         <module>simulated-anomalies-behaviour</module>
+        <module>startButton.api</module>
+        <module>startButton.impl</module>
   </modules>
 </project>

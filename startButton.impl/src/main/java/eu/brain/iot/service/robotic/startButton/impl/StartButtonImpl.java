@@ -1,19 +1,21 @@
 package eu.brain.iot.service.robotic.startButton.impl;
 
-import com.paremus.brain.iot.example.sensor.api.SensorReadingDTO;
+
 import eu.brain.iot.eventing.annotation.SmartBehaviourDefinition;
 import eu.brain.iot.eventing.api.EventBus;
 import eu.brain.iot.redeployment.api.AnomaliesDTO;
 import eu.brain.iot.service.robotic.startButton.api.StartDTO;
 import eu.brain.iot.service.robotic.startButton.api.startButton;
 
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.http.whiteboard.propertytypes.HttpWhiteboardResource;
 import org.osgi.service.jaxrs.whiteboard.propertytypes.JaxrsResource;
 
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
+
 
 /**
  * This component triggers sensor readings based on web clicks

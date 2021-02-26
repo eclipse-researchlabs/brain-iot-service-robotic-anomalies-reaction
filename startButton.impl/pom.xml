@@ -28,11 +28,7 @@
             <artifactId>test-bundles</artifactId>
             <type>pom</type>
         </dependency>
-        <dependency>
-            <groupId>com.paremus.brain.iot.example</groupId>
-            <artifactId>sensor.api</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
+      
         <dependency>
             <groupId>com.paremus.brain.iot</groupId>
             <artifactId>eventing.api</artifactId>
@@ -44,11 +40,12 @@
             <type>pom</type>
             <scope>runtime</scope>
         </dependency>
-        <dependency>
-            <groupId>org.apache.aries.jax.rs</groupId>
-            <artifactId>org.apache.aries.jax.rs.jackson</artifactId>
-            <version>1.0.1</version>
-        </dependency>
+       <dependency>
+                <groupId>org.apache.aries.jax.rs</groupId>
+                <artifactId>org.apache.aries.jax.rs.jackson</artifactId>
+                <version>1.0.1</version>
+               
+            </dependency>
         <dependency>
             <groupId>com.paremus.brain.iot</groupId>
             <artifactId>eventing.impl</artifactId>
@@ -103,7 +100,7 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
+             <plugin>
                 <groupId>com.paremus.brain.iot.maven</groupId>
                 <artifactId>smart-behaviour-maven-plugin</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
@@ -112,12 +109,10 @@
 						<goals>
 							<goal>smart-behaviour</goal>
 						</goals>
-						<configuration>
-                            <bndrun>sensor.bndrun</bndrun>
-                        </configuration>
 					</execution>
 				</executions>
             </plugin>
+
         </plugins>
     </build>
 </project>

@@ -8,14 +8,14 @@ index: target/index.xml;name="app"
 -resolve.effective: active
 -runrequires: \
 	bnd.identity;id='com.paremus.brain.iot.eventing.impl',\
-	bnd.identity;id='com.paremus.brain.iot.management.impl',\
 	bnd.identity;id='com.paremus.brain.iot.installer.impl',\
 	bnd.identity;id='com.paremus.brain.iot.resolver.impl',\
 	bnd.identity;id='com.paremus.brain.iot.message.integrity.insecure.impl',\
 	bnd.identity;id='eu.brain.iot.service.robotic.BMS.Configurator',\
 	bnd.identity;id='eu.brain.iot.service.robotic.redeployment.impl',\
 	bnd.identity;id='eu.brain.iot.service.robotic.startButton.impl',\
-	bnd.identity;id='eu.brain.iot.service.robotic.OSGi.Framework.info.Query.impl'
+	bnd.identity;id='eu.brain.iot.service.robotic.OSGi.Framework.info.Query.impl',\
+	bnd.identity;id='com.paremus.brain.iot.management.impl'
 -runbundles: \
 	biz.aQute.bndlib;version='[4.3.0,4.3.1)',\
 	biz.aQute.repository;version='[4.3.0,4.3.1)',\
