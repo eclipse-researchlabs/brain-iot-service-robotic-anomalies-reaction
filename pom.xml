@@ -130,7 +130,6 @@
                 <scope>test</scope>
             </dependency>
             
-         
             <dependency>
                 <groupId>com.paremus.brain.iot</groupId>
                 <artifactId>eventing.impl</artifactId>
@@ -143,6 +142,7 @@
                 <version>0.0.1-SNAPSHOT</version>
                 <scope>runtime</scope>
             </dependency>
+            
             <dependency>
                 <groupId>org.osgi.enroute</groupId>
                 <artifactId>test-bundles</artifactId>
@@ -325,5 +325,5 @@ Bundle-SymbolicName: ${project.groupId}.${project.artifactId}
         <module>simulated-anomalies-behaviour</module>
         <module>startButton.api</module>
         <module>startButton.impl</module>
-  </modules>
+      </modules>
 </project>

@@ -1,21 +1,20 @@
 index: target/index.xml;name="app"
 
--standalone: ${index}
 
 -runfw: org.eclipse.osgi
 -runee: JavaSE-1.8
 
 -resolve.effective: active
 -runrequires: \
-	bnd.identity;id='com.paremus.brain.iot.eventing.impl',\
 	bnd.identity;id='com.paremus.brain.iot.installer.impl',\
 	bnd.identity;id='com.paremus.brain.iot.resolver.impl',\
 	bnd.identity;id='com.paremus.brain.iot.message.integrity.insecure.impl',\
 	bnd.identity;id='eu.brain.iot.service.robotic.BMS.Configurator',\
 	bnd.identity;id='eu.brain.iot.service.robotic.redeployment.impl',\
-	bnd.identity;id='eu.brain.iot.service.robotic.startButton.impl',\
 	bnd.identity;id='eu.brain.iot.service.robotic.OSGi.Framework.info.Query.impl',\
-	bnd.identity;id='com.paremus.brain.iot.management.impl'
+	bnd.identity;id='com.paremus.brain.iot.management.impl',\
+	bnd.identity;id='com.paremus.brain.iot.eventing.impl',\
+	bnd.identity;id='eu.brain.iot.service.robotic.startButton.impl'
 -runbundles: \
 	biz.aQute.bndlib;version='[4.3.0,4.3.1)',\
 	biz.aQute.repository;version='[4.3.0,4.3.1)',\
@@ -32,6 +31,7 @@ index: target/index.xml;name="app"
 	com.paremus.brain.iot.resolver.impl;version='[0.0.1,0.0.2)',\
 	eu.brain.iot.service.robotic.BMS.Configurator;version='[0.0.1,0.0.2)',\
 	eu.brain.iot.service.robotic.OSGi.Framework.info.Query.api;version='[0.0.1,0.0.2)',\
+	eu.brain.iot.service.robotic.OSGi.Framework.info.Query.impl;version='[0.0.1,0.0.2)',\
 	eu.brain.iot.service.robotic.redeployment.api;version='[0.0.1,0.0.2)',\
 	eu.brain.iot.service.robotic.redeployment.impl;version='[0.0.1,0.0.2)',\
 	eu.brain.iot.service.robotic.startButton.api;version='[0.0.1,0.0.2)',\
@@ -46,5 +46,4 @@ index: target/index.xml;name="app"
 	org.apache.servicemix.specs.annotation-api-1.3;version='[1.3.0,1.3.1)',\
 	org.eclipse.equinox.log.stream;version='[1.0.100,1.0.101)',\
 	org.osgi.service.jaxrs;version='[1.0.0,1.0.1)',\
-	slf4j.api;version='[1.7.25,1.7.26)',\
-	eu.brain.iot.service.robotic.OSGi.Framework.info.Query.impl;version='[0.0.1,0.0.2)'
+	slf4j.api;version='[1.7.25,1.7.26)'

@@ -16,7 +16,6 @@
 	eu.brain.iot.service.robotic.redeployment.api;version='[0.0.1,0.0.2)',\
 	eu.brain.iot.service.robotic.startButton.api;version='[0.0.1,0.0.2)',\
 	eu.brain.iot.service.robotic.startButton.impl;version='[0.0.1,0.0.2)',\
-	org.apache.aries.javax.jax.rs-api;version='[1.0.0,1.0.1)',\
 	org.apache.aries.jax.rs.whiteboard;version='[1.0.1,1.0.2)',\
 	org.apache.felix.configadmin;version='[1.9.8,1.9.9)',\
 	org.apache.felix.http.jetty;version='[4.0.6,4.0.7)',\
@@ -28,6 +27,7 @@
 	org.osgi.util.promise;version='[1.1.0,1.1.1)',\
 	org.osgi.util.pushstream;version='[1.0.0,1.0.1)',\
 	slf4j.api;version='[1.7.25,1.7.26)',\
+	org.apache.aries.javax.jax.rs-api;version='[1.0.0,1.0.1)',\
 	com.fasterxml.jackson.core.jackson-annotations;version='[2.9.0,2.9.1)',\
 	com.fasterxml.jackson.core.jackson-core;version='[2.9.6,2.9.7)',\
 	com.fasterxml.jackson.core.jackson-databind;version='[2.9.6,2.9.7)',\
@@ -35,3 +35,4 @@
 	com.fasterxml.jackson.jaxrs.jackson-jaxrs-json-provider;version='[2.9.6,2.9.7)',\
 	com.fasterxml.jackson.module.jackson-module-jaxb-annotations;version='[2.9.6,2.9.7)',\
 	org.apache.aries.jax.rs.jackson;version='[1.0.2,1.0.3)'
+-ignore-standalone: 

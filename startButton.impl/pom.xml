@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-   <parent>
-   <groupId>eu.brain.iot.service.robotic</groupId>
-   <artifactId>redeployment</artifactId>
-   <version>0.0.1-SNAPSHOT</version>
-   </parent>
+  <parent>
+    <artifactId>eventing-example</artifactId>
+    <groupId>com.paremus.brain.iot.example</groupId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
     <groupId>eu.brain.iot.service.robotic</groupId>
     <artifactId>startButton.impl</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -40,12 +40,16 @@
             <type>pom</type>
             <scope>runtime</scope>
         </dependency>
+     
+
        <dependency>
                 <groupId>org.apache.aries.jax.rs</groupId>
                 <artifactId>org.apache.aries.jax.rs.jackson</artifactId>
-                <version>1.0.1</version>
+                <version>1.0.2</version>
                
             </dependency>
+    
+        
         <dependency>
             <groupId>com.paremus.brain.iot</groupId>
             <artifactId>eventing.impl</artifactId>
@@ -67,11 +71,37 @@
     <version>0.0.1-SNAPSHOT</version>
     
         </dependency>
+       
+  
+    <!-- https://mvnrepository.com/artifact/org.apache.aries.spec/org.apache.aries.javax.jax.rs-api -->
+<dependency>
+    <groupId>org.apache.aries.spec</groupId>
+    <artifactId>org.apache.aries.javax.jax.rs-api</artifactId>
+    <version>1.0.0</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.apache.aries.jpa.javax.persistence/javax.persistence -->
+<dependency>
+    <groupId>org.apache.aries.jpa.javax.persistence</groupId>
+    <artifactId>javax.persistence_2.1</artifactId>
+    <version>2.7.1</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-servlet-api -->
+<!-- https://mvnrepository.com/artifact/org.apache.felix/org.apache.felix.http.servlet-api -->
+<dependency>
+    <groupId>org.apache.felix</groupId>
+    <artifactId>org.apache.felix.http.servlet-api</artifactId>
+    <version>1.1.2</version>
+</dependency>
+       
+       
+       
+       
+       
         
      </dependencies>
 
     <build>
-        <plugins>
+       <plugins>
             <!-- Expected to inherit configuration from a parent enRoute 
                 pom. This includes -contract definitions and maven-jar-plugin setup -->
             <plugin>
@@ -94,13 +124,13 @@
                         <phase>package</phase>
                         <configuration>
                             <bndruns>
-                                <bndrun>sensor.bndrun</bndrun>
+                                <bndrun>start.bndrun</bndrun>
                             </bndruns>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
-             <plugin>
+            <plugin>
                 <groupId>com.paremus.brain.iot.maven</groupId>
                 <artifactId>smart-behaviour-maven-plugin</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
@@ -109,10 +139,12 @@
 						<goals>
 							<goal>smart-behaviour</goal>
 						</goals>
+						<configuration>
+                            <bndrun>start.bndrun</bndrun>
+                        </configuration>
 					</execution>
 				</executions>
             </plugin>
-
         </plugins>
     </build>
 </project>
