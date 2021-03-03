@@ -149,7 +149,7 @@ public void ResponseToRobotBatteryAnomaly() {
 	 version= smartBehaviorList.get("eu.brain.iot.service.robotic.eu.brain.iot.ros.edge.node");
 	 installNewBehavior("eu.brain.iot.service.robotic.eu.brain.iot.ros.edge.node",version,TargetNode);
 	 try {
-		logger.info("wait ROS Edge Node to get ready, for 10s.... ");
+		logger.info("Redeployer: wait ROS Edge Node to get ready, for 10s.... ");
 		Thread.sleep(5000);
 		StartDTO start=new StartDTO();
 		eventBus.deliver(start);

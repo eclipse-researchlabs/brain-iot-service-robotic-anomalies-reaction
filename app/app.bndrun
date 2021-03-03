@@ -28,7 +28,6 @@ logback.configurationFile=/opt/fabric/resources/logback.xml
 	bnd.identity;id='com.paremus.brain.iot.eventing.impl',\
 	bnd.identity;id='eu.brain.iot.service.robotic.startButton.impl'
 	
-	
 -runbundles: \
 	biz.aQute.bndlib;version='[4.3.0,4.3.1)',\
 	biz.aQute.repository;version='[4.3.0,4.3.1)',\

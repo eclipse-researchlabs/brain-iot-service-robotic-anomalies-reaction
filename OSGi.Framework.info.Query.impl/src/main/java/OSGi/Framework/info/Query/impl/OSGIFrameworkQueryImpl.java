@@ -46,7 +46,6 @@ public class OSGIFrameworkQueryImpl implements OSGIFrameworkQuery,SmartBehaviour
     @Reference
 	private EventBus eventBus;
     private ExecutorService worker;
-    
     @Activate
     public void start(BundleContext context, Config config){
         System.setProperty("logback.configurationFile", config.logPath());
@@ -140,8 +139,10 @@ public void Notification(String thisOSGiFrameworkID) {
 public void notify(BrainIoTEvent event) {
 	// TODO Auto-generated method stub
 	if(event instanceof StartDTO) {
-		 WriteToFile("Runner: I received the Start event");
-		
+		    WriteToFile("Runner: I received the Start event");
+		    if(discovered)
+		    	WriteToFile("Runner: I have already been discovered");	
+		    else
 		    worker.execute(()->{
 		    	Notification(thisOSGiFrameworkID);
 		    });
