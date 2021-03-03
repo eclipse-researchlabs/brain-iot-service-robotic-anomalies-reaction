@@ -4,8 +4,10 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -17,6 +19,9 @@ import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.metatype.annotations.ObjectClassDefinition;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.paremus.brain.iot.management.api.BehaviourManagement;
 
@@ -28,6 +33,7 @@ import eu.brain.iot.eventing.api.EventBus;
 import eu.brain.iot.eventing.api.SmartBehaviour;
 import eu.brain.iot.installer.api.BehaviourDTO;
 import eu.brain.iot.redeployment.api.AnomaliesDTO;
+import eu.brain.iot.service.robotic.startButton.api.StartDTO;
 @Component(service= {SmartBehaviour.class,RedeploymentImpl.class})
 @SmartBehaviourDefinition(consumed= {AnomaliesDTO.class,ReportTargetNodeDTO.class},filter="(timestamp=*)", 
                          author="LINKS", name ="Redeployment Behaviour", 
@@ -36,6 +42,14 @@ public class RedeploymentImpl implements SmartBehaviour<BrainIoTEvent>{
    private String thisOSGiFrameworkID;
    private Collection<BehaviourDTO> behaviours= new LinkedList<BehaviourDTO>();
    private String TargetNode="";
+   private Map<String,String> smartBehaviorList;
+   @ObjectClassDefinition
+	public static @interface Config {
+		String logPath() default "/opt/fabric/resources/logback.xml"; // "/opt/fabric/resources/";
+	}
+   
+   private Logger logger;
+   
    @Reference
    BehaviourManagement bms;
    
@@ -49,13 +63,17 @@ public class RedeploymentImpl implements SmartBehaviour<BrainIoTEvent>{
    File myObj;
    
    @Activate
-   public void start(BundleContext context) throws InterruptedException{
+   public void start(BundleContext context,Config config) throws InterruptedException{
+	   System.setProperty("logback.configurationFile",config.logPath() );
+	   logger = (Logger) LoggerFactory.getLogger(RedeploymentImpl.class.getSimpleName());
 	   thisOSGiFrameworkID = context.getProperty(Constants.FRAMEWORK_UUID);
-	   CreateFile();
+	  // CreateFile();
 	   String s="Redeployer: I am ["+this.thisOSGiFrameworkID+"]";
 	   WriteToFile(s);
+	   smartBehaviorList=new HashMap<String, String>();
 	   getBehaviorsFromMarketplace();
 	   worker = Executors.newSingleThreadExecutor();
+	   
    }
    @Deactivate
 	void stop() {
@@ -63,9 +81,9 @@ public class RedeploymentImpl implements SmartBehaviour<BrainIoTEvent>{
 		worker.shutdown();
 		try {
 			worker.awaitTermination(1, TimeUnit.SECONDS);
-		} catch (InterruptedException ie) {
+		} catch (InterruptedException e) {
 			// Propagate the interrupt
-			Thread.currentThread().interrupt();
+			logger.error("\n RedeploymentImple error:", e.getMessage());
 		}
 	}
 
@@ -79,7 +97,7 @@ public void installNewBehavior(String Behavior,String version,String targetNode)
 	   behaviour.bundle=Behavior;
 	   behaviour.version=version;
 	   bms.installBehaviour(behaviour, targetNode);
-	   WriteToFile("Redeployer:event is delivered:" +Behavior);
+	   WriteToFile("Redeployer:event is delivered for installation of" +Behavior +":"+version);
 	   
 	   
    }
@@ -108,15 +126,10 @@ public Collection<BehaviourDTO> getBehaviorsFromMarketplace() {
    
        try {
            behaviours = bms.findBehaviours(null);
-
-           List<String> nameVersions = behaviours.stream()
-                   .map(b -> b.bundle + ":" + b.version)
-                   .collect(Collectors.toList());
-
-
            behaviours.forEach(b -> {
+        	   System.out.println(b.bundle + ":" + b.version);
         	   WriteToFile(b.bundle + ":"+ b.version);
-        	  
+        	   smartBehaviorList.put(b.bundle, b.version);
            });
        } catch (Exception e) {
            e.printStackTrace();
@@ -131,15 +144,29 @@ public void ResponseToSecurityLightSystem() {
 }   
 
 public void ResponseToRobotBatteryAnomaly() {
-	 installNewBehavior("eu.brain.iot.service.robotic.eu.brain.iot.robot.behaviour", "0.0.2.SNAPSHOT",TargetNode);
-	 installNewBehavior("eu.brain.iot.service.robotic.eu.brain.iot.ros.edge.node", "0.0.4.SNAPSHOT",TargetNode);
+	 String version= smartBehaviorList.get("eu.brain.iot.service.robotic.eu.brain.iot.robot.behaviour");
+	 installNewBehavior("eu.brain.iot.service.robotic.eu.brain.iot.robot.behaviour",version,TargetNode);
+	 version= smartBehaviorList.get("eu.brain.iot.service.robotic.eu.brain.iot.ros.edge.node");
+	 installNewBehavior("eu.brain.iot.service.robotic.eu.brain.iot.ros.edge.node",version,TargetNode);
+	 try {
+		logger.info("wait ROS Edge Node to get ready, for 10s.... ");
+		Thread.sleep(5000);
+		StartDTO start=new StartDTO();
+		eventBus.deliver(start);
+	} catch (InterruptedException e) {
+		// TODO Auto-generated catch block
+		logger.error("\n RedeploymentImple error:" + e.getMessage());
+	}
+	 
+	 
 }   
 
 
 public void WriteToFile(String s){
-	System.out.println(s);
+	//System.out.println(s);
+	logger.info(s+"\n");
 	 
-      try {
+    /*  try {
 	    	 
 	       FileWriter myWriter = new FileWriter(myObj, true);
 	       myWriter.write(s +"\n");
@@ -147,7 +174,7 @@ public void WriteToFile(String s){
 	     } catch (IOException e) {
 	       System.out.println("An error occurred.");
 	       e.printStackTrace();
-	     }
+	     }*/
 	   }
 public boolean checkBackupNode(){
 	if(TargetNode=="") {
@@ -178,12 +205,14 @@ public void notify(BrainIoTEvent event) {
 		   while(!checkBackupNode());
 		   switch(AnomaliesEvent.Scenario) {
 			 case "ROB": 
-				 ResponseToRobotBatteryAnomaly();
 				 WriteToFile("Redeployer: Robot system will be installed into the targetNode"+ TargetNode);
+				 ResponseToRobotBatteryAnomaly();
+				
 				 break;
 			 case "Light":
+				 WriteToFile("Redeployer: Security light system will be installed into the targetNode"+ TargetNode);
 				 ResponseToSecurityLightSystem();
-				 WriteToFile("Redeployer: security light system will be installed into the targetNode"+ TargetNode);
+				
 				 break;
 			 default:
 				 WriteToFile("Redeploytor: The annomalies event is not recongnizable"); 

@@ -13,6 +13,10 @@ import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.metatype.annotations.ObjectClassDefinition;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import eu.brain.iot.Query.api.OSGIFrameworkQuery;
 import eu.brain.iot.Query.api.ReportTargetNodeDTO;
 import eu.brain.iot.Query.api.TargetNodeFIDResponse;
@@ -22,27 +26,40 @@ import eu.brain.iot.eventing.api.EventBus;
 import eu.brain.iot.eventing.api.SmartBehaviour;
 import eu.brain.iot.service.robotic.startButton.api.StartDTO;
 
+
 @Component(immediate=true)
 @SmartBehaviourDefinition(consumed = {TargetNodeFIDResponse.class, StartDTO.class}, filter="(timestamp=*)",
 author = "LINKS", name = "Local OSGi Framework ID Report",
 description = "Report the current running OSGi Framework ID.")
 public class OSGIFrameworkQueryImpl implements OSGIFrameworkQuery,SmartBehaviour<BrainIoTEvent>{
     private String thisOSGiFrameworkID;
+    @ObjectClassDefinition
+	public static @interface Config {
+		String logPath() default "/opt/fabric/resources/logback.xml"; // "/opt/fabric/resources/";
+	}
+   
+   private Logger logger;
+
     //TODO add an implementation
     File myObj;
     private boolean discovered=false;
     @Reference
 	private EventBus eventBus;
     private ExecutorService worker;
+    
     @Activate
-    public void start(BundleContext context){
+    public void start(BundleContext context, Config config){
+        System.setProperty("logback.configurationFile", config.logPath());
+ 		
+ 		logger = (Logger) LoggerFactory.getLogger(OSGIFrameworkQueryImpl.class.getSimpleName());
+ 		
+
     thisOSGiFrameworkID=context.getProperty(Constants.FRAMEWORK_UUID);
-    CreateFile();
+    //CreateFile();
     WriteToFile("Runner: I am "+ thisOSGiFrameworkID);
     worker = Executors.newSingleThreadExecutor();
     }
-    
-    
+   
     @Deactivate
 	void stop() {
 		worker.shutdown();
@@ -82,7 +99,7 @@ public void Notification(String thisOSGiFrameworkID) {
 	 	
 }
 	public void CreateFile(){
-		  
+		 
 	     try {
 	       myObj = new File("Runner_log.txt");
 	       if (myObj.createNewFile()) {
@@ -102,9 +119,10 @@ public void Notification(String thisOSGiFrameworkID) {
   }
   
   public void WriteToFile(String s){
-	  System.out.println(s);
+	  logger.info(s+"\n");
+	//  System.out.println(s);
 	     
-	      try {
+	    /*  try {
 	      
 	       FileWriter myWriter = new FileWriter(myObj, true);
 	       myWriter.write(s +"\n");
@@ -113,7 +131,7 @@ public void Notification(String thisOSGiFrameworkID) {
 	     } catch (IOException e) {
 	       System.out.println("Runner:An error occurred.");
 	       e.printStackTrace();
-	     } 
+	     } */
 	   }
 
 

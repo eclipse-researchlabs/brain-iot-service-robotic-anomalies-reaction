@@ -5,6 +5,18 @@ index: target/index.xml;name="app"
 -runee: JavaSE-1.8
 
 -resolve.effective: active
+-runproperties: \
+log4j.logger.org.apache.http=WARN,\
+log4j.logger.org.apache.http.headers=WARN,\
+log4j.logger.org.apache.http.wire=WARN,\
+org.eclipse.jetty.util.log.class=org.eclipse.jetty.util.log.stdErrLog,\
+aQute.bnd.http.HttpClient.LEVEL=WARN,\
+org.eclipse.jetty.LEVEL=WARN,\
+org.apache.felix.log.storeDebug=false,\
+org.osgi.service.log.admin.loglevel=WARN,\
+logback.configurationFile=/opt/fabric/resources/logback.xml
+
+
 -runrequires: \
 	bnd.identity;id='com.paremus.brain.iot.installer.impl',\
 	bnd.identity;id='com.paremus.brain.iot.resolver.impl',\
@@ -15,6 +27,8 @@ index: target/index.xml;name="app"
 	bnd.identity;id='com.paremus.brain.iot.management.impl',\
 	bnd.identity;id='com.paremus.brain.iot.eventing.impl',\
 	bnd.identity;id='eu.brain.iot.service.robotic.startButton.impl'
+	
+	
 -runbundles: \
 	biz.aQute.bndlib;version='[4.3.0,4.3.1)',\
 	biz.aQute.repository;version='[4.3.0,4.3.1)',\

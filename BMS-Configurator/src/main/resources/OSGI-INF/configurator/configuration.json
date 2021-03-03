@@ -9,7 +9,7 @@
     
    
     "eu.brain.iot.BehaviourManagementService": {
-           "indexes": "https://nexus.repository-pert.ismb.it/repository/marketplaces/com.paremus.brain.iot.marketplace/service-robotic-marketplace-update/0.0.2-SNAPSHOT/index.xml", 
+           "indexes": "https://nexus.repository-pert.ismb.it/repository/marketplaces/com.paremus.brain.iot.marketplace/service-robotic-marketplace-update/0.0.3-SNAPSHOT/index.xml", 
            "connection.settings": ""
            }
    
