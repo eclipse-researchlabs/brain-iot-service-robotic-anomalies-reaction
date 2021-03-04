@@ -25,7 +25,9 @@
          <groupId>com.paremus.brain.iot</groupId>
         <artifactId>eventing.api</artifactId>
        <version>0.0.1-SNAPSHOT</version>   
+       </dependency>
        
+       <dependency>
        
        </dependency>
      </dependencies>
