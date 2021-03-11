@@ -150,7 +150,7 @@ public void ResponseToRobotBatteryAnomaly() {
 	 installNewBehavior("eu.brain.iot.service.robotic.eu.brain.iot.ros.edge.node",version,TargetNode);
 	 try {
 		logger.info("Redeployer: wait ROS Edge Node to get ready, for 10s.... ");
-		Thread.sleep(5000);
+		Thread.sleep(10000);
 		StartDTO start=new StartDTO();
 		eventBus.deliver(start);
 	} catch (InterruptedException e) {
