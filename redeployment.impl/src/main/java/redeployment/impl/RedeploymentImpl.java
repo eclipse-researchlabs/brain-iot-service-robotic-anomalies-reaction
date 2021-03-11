@@ -153,6 +153,7 @@ public void ResponseToRobotBatteryAnomaly() {
 		Thread.sleep(10000);
 		StartDTO start=new StartDTO();
 		eventBus.deliver(start);
+		logger.info("Redeployer: sent the start event to the recovery ros edge node");
 	} catch (InterruptedException e) {
 		// TODO Auto-generated catch block
 		logger.error("\n RedeploymentImple error:" + e.getMessage());
