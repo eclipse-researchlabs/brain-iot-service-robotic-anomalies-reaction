@@ -53,3 +53,4 @@ test-index: target/test-index.xml;name="multi-framework-example Test"
 	org.apache.felix.webconsole.plugins.ds;version='[2.0.8,2.0.9)',\
 	org.osgi.util.pushstream;version='[1.0.0,1.0.1)',\
 	slf4j.api;version='[1.7.25,1.7.26)'
+-runrequires: bnd.identity;id='eu.brain.iot.service.robotic.startButton.impl'

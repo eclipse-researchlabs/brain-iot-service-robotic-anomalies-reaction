@@ -60,3 +60,4 @@ logback.configurationFile=/opt/fabric/resources/logback.xml
 	org.eclipse.equinox.log.stream;version='[1.0.100,1.0.101)',\
 	org.osgi.service.jaxrs;version='[1.0.0,1.0.1)',\
 	slf4j.api;version='[1.7.25,1.7.26)'
+-standalone: 

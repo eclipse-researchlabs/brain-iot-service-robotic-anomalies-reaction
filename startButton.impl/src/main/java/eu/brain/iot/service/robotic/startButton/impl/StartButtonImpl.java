@@ -58,19 +58,23 @@ public class StartButtonImpl implements startButton {
 
     @Path("startSystem")
     @POST
-    public void startSystem(){
+    public String startSystem(){
     	StartDTO event=new StartDTO();
         eventBus.deliver(event);
         logger.info("Start event delivered\n");
+        logger.info("return system started\n");
+        
+        return "system started";
     }
     
    @Path("trigger")
     @POST
-    public void trigger(){
+    public String trigger(){
 	    AnomaliesDTO anomalyEvent=new AnomaliesDTO();
 	    anomalyEvent.Scenario="ROB";
 	    eventBus.deliver(anomalyEvent);
 	    logger.info("Anomaly Behavior: One anomaly event of " + anomalyEvent.Scenario +" sent");
+	    return "Anomaly Behavior: one anomaly event sent";
 	    }
     	
     	
