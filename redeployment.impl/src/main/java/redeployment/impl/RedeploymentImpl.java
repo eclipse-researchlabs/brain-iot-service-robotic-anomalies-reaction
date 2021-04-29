@@ -13,6 +13,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
+import org.eclipse.sensinact.brainiot.cwi.api.AnomaliesDetectionMessage;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.Constants;
 import org.osgi.service.component.annotations.Activate;
@@ -35,7 +36,7 @@ import eu.brain.iot.installer.api.BehaviourDTO;
 import eu.brain.iot.redeployment.api.AnomaliesDTO;
 import eu.brain.iot.service.robotic.startButton.api.StartDTO;
 @Component(service= {SmartBehaviour.class,RedeploymentImpl.class})
-@SmartBehaviourDefinition(consumed= {AnomaliesDTO.class,ReportTargetNodeDTO.class},filter="(timestamp=*)", 
+@SmartBehaviourDefinition(consumed= {AnomaliesDTO.class,ReportTargetNodeDTO.class,AnomaliesDetectionMessage.class},filter="(timestamp=*)", 
                          author="LINKS", name ="Redeployment Behaviour", 
                          description="Implements a behavior that is able to response to the anomalies events.")
 public class RedeploymentImpl implements SmartBehaviour<BrainIoTEvent>{
@@ -220,6 +221,17 @@ public void notify(BrainIoTEvent event) {
 		     
 			} 
 	   });
+   }
+	   
+	   if(event instanceof AnomaliesDetectionMessage) {
+		   WriteToFile("Redeployer: received Anomalies event");
+		   AnomaliesDetectionMessage AnomaliesDetectionMessage= (AnomaliesDetectionMessage) event;
+		   AnomaliesDetectionMessage.anomalies.entrySet()
+				    .forEach((entry) -> WriteToFile("Robot" + entry.getKey() + "is experiencing the abnormal now"));
+		   worker.execute(()->{
+					 WriteToFile("Redeployer: Robot system will be installed into the targetNode"+ TargetNode);
+					 ResponseToRobotBatteryAnomaly();
+		   });
 	   
    }   
 	

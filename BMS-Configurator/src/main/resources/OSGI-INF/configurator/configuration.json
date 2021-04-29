@@ -11,6 +11,12 @@
     "eu.brain.iot.BehaviourManagementService": {
            "indexes": "https://nexus.repository-pert.ismb.it/repository/marketplaces/com.paremus.brain.iot.marketplace/service-robotic-marketplace-update/0.0.3-SNAPSHOT/index.xml", 
            "connection.settings": ""
-           }
+           },
+           
+    "com.improvingmetrics.brain.iot.s0nar.bridge.s0nar-bridge.impl":{
+      "s0narApiUrl": "http://192.168.2.130:5004/s0nar/v1"  
+    } 
    
 }
+
+

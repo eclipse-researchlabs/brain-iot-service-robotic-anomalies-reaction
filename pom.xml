@@ -325,5 +325,7 @@ Bundle-SymbolicName: ${project.groupId}.${project.artifactId}
         <module>simulated-anomalies-behaviour</module>
         <module>startButton.api</module>
         <module>startButton.impl</module>
-      </modules>
+    <module>Voltage_Data_Reader</module>
+    <module>startButton-demo</module>
+  </modules>
 </project>
