@@ -67,7 +67,7 @@
         <dependency>
         <groupId>eu.brain.iot.service.robotic</groupId>
         <artifactId>startButton.api</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>0.0.3-SNAPSHOT</version>
         </dependency>
         <dependency>
          <groupId>eu.brain.iot.service.robotic</groupId>

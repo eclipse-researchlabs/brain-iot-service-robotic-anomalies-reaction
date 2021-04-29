@@ -56,19 +56,23 @@ public class StartButtonDemoImpl implements startButton {
     @Reference
     private EventBus eventBus;
 
+
     @Path("startSystem")
     @POST
     public String startSystem(){
-    	StartDTO event=new StartDTO();
-    	StartROSDTO ros1=new StartROSDTO(1);
-    	StartROSDTO ros2=new StartROSDTO(2);
-    	StartROSDTO ros3=new StartROSDTO(3);
-    	StartROSDTO ros4=new StartROSDTO(4);
-    	eventBus.deliver(ros1);
-    	eventBus.deliver(ros2);
-    	eventBus.deliver(ros3);
-    	eventBus.deliver(ros4);
-        logger.info("Start event delivered to ros1, ros2, ros3, ros4\n");
+        StartROSDTO ros1=new StartROSDTO();
+       ros1.robotID=1;
+        StartROSDTO ros2=new StartROSDTO();
+       ros2.robotID=2;
+        StartROSDTO ros3=new StartROSDTO();
+       ros3.robotID=3;
+        StartROSDTO ros4=new StartROSDTO();
+       ros4.robotID=4;
+        eventBus.deliver(ros1);
+        eventBus.deliver(ros2);
+        eventBus.deliver(ros3);
+        eventBus.deliver(ros4);
+        logger.info("V3: Start event delivered to ros1, ros2, ros3, ros4\n");
         logger.info("return system started\n");
         return "system started";
     }
@@ -76,9 +80,11 @@ public class StartButtonDemoImpl implements startButton {
    @Path("trigger")
     @POST
     public String trigger(){
-	    StartROSDTO ros5=new StartROSDTO(5);
-	    eventBus.deliver(ros5);
-	    logger.info("Start event delivered to ros5\n");
-	    return "Anomaly Behavior: one anomaly event sent";
-	    }
+        StartROSDTO ros5=new StartROSDTO();
+        ros5.robotID=5;
+        eventBus.deliver(ros5);
+        logger.info("V3: Start event delivered to ros5\n");
+        return "Anomaly Behavior: one anomaly event sent";
+        }
+    
     }
