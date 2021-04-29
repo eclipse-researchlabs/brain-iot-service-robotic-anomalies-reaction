@@ -40,7 +40,7 @@ description = "A CSV File Reader to inject Voltage Events to EventBus"
 public class VoltageDataReader implements SmartBehaviour<BrainIoTEvent>
 {
 	
-	private String pathToCsv="go-to-cart.robot-A.battery-converted-1min.csv";
+	private String pathToCsv="normal-discharge-1min.csv";
 	private Logger logger;
 	private String RobotId="1";	
 	@Reference
